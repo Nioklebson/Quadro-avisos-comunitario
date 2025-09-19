@@ -49,3 +49,6 @@ Para monitorar a qualidade do código e estimar o esforço de desenvolvimento, f
     - **Adicionar Aviso:** Estimada como **Pequena (P)**, pois é uma funcionalidade direta.
     - **Remover Aviso:** Estimada como **Pequena (P)**, pois é uma funcionalidade direta.
     - **Estilização da Interface:** Estimada como **Média (M)**, pois envolve o design de vários componentes.
+    ## 🔍 Revisão Técnica
+
+A gente fez uma revisão rápida no nosso código e vimos que poderíamos melhorar. A gente notou que a organização das variáveis no arquivo script.js não estava ideal, então arrumamos isso para deixar o código mais limpo e fácil de entender. É uma daquelas coisas que a gente aprende que faz toda a diferença para o projeto.
