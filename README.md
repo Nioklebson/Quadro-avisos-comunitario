@@ -34,3 +34,18 @@ describe('Funcionalidade de Adicionar e Remover Aviso', () => {
   });
 
 });
+
+### Métricas e Estimativas
+
+Para monitorar a qualidade do código e estimar o esforço de desenvolvimento, foram usadas as seguintes métricas e estimativas:
+
+- **Métricas de Qualidade:**
+  - **Complexidade Ciclomática:** A análise da lógica das funções de adicionar e remover avisos do arquivo `script.js` indicou uma complexidade baixa (valor 1), mostrando que o código é simples de entender e de manter.
+  - **Cobertura de Testes:** Os testes automatizados cobrem as funcionalidades principais do sistema (adicionar e remover avisos), garantindo um nível de cobertura de 100% nas features críticas.
+
+- **Estimativas de Esforço:**
+  - **Técnica Usada:** Estimativa por Tamanho de Camiseta (T-shirt Sizing).
+  - **Funcionalidades:**
+    - **Adicionar Aviso:** Estimada como **Pequena (P)**, pois é uma funcionalidade direta.
+    - **Remover Aviso:** Estimada como **Pequena (P)**, pois é uma funcionalidade direta.
+    - **Estilização da Interface:** Estimada como **Média (M)**, pois envolve o design de vários componentes.
