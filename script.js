@@ -1,33 +1,54 @@
 // Importa as funções do Firebase que vamos usar
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
 
 // Seu código de configuração do Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyA11-7OTcu98lVU5FVMQc6Zcl4xRPj_JxU",
-  authDomain: "quadro-de-avisos-comunitario.firebaseapp.com",
-  projectId: "quadro-de-avisos-comunitario",
-  storageBucket: "quadro-de-avisos-comunitario.firebasestorage.app",
-  messagingSenderId: "327472001238",
-  appId: "1:327472001238:web:1e4800c63ede3d85ea1977"
+    apiKey: "AIzaSyA11-7OTcu98lVU5FVMQc6Zcl4xRPj_JxU",
+    authDomain: "quadro-de-avisos-comunitario.firebaseapp.com",
+    projectId: "quadro-de-avisos-comunitario",
+    storageBucket: "quadro-de-avisos-comunitario.firebasestorage.app",
+    messagingSenderId: "327472001238",
+    appId: "1:327472001238:web:1e4800c63ede3d85ea1977"
 };
 
 // Inicializa o app do Firebase
 const app = initializeApp(firebaseConfig);
-
-// AQUI ESTÁ A CORREÇÃO: a URL do banco de dados é passada para a função getDatabase
 const database = getDatabase(app, "https://quadro-de-aviso-comunitario-default-rtdb.firebaseio.com/");
-
+const auth = getAuth(app);
 const avisosRef = ref(database, 'avisos');
 
 document.addEventListener('DOMContentLoaded', () => {
     const avisoInput = document.getElementById('aviso-input');
     const adicionarBtn = document.getElementById('adicionar-btn');
     const listaAvisos = document.getElementById('lista-avisos');
+    const authContainer = document.querySelector('.auth-container');
+    const authEmail = document.getElementById('auth-email');
+    const authPassword = document.getElementById('auth-password');
+    const loginBtn = document.getElementById('auth-login-btn');
+    const registerBtn = document.getElementById('auth-register-btn');
+    const mainContainer = document.querySelector('.container');
+
+    // Estado inicial: esconde o quadro de avisos
+    mainContainer.style.display = 'none';
+
+    // Observa o estado de autenticação do usuário
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // Usuário logado: esconde o formulário de login e mostra o quadro de avisos
+            authContainer.style.display = 'none';
+            mainContainer.style.display = 'block';
+        } else {
+            // Usuário deslogado: mostra o formulário de login e esconde o quadro de avisos
+            authContainer.style.display = 'block';
+            mainContainer.style.display = 'none';
+        }
+    });
 
     // Escuta por mudanças no banco de dados em tempo real
     onValue(avisosRef, (snapshot) => {
-        listaAvisos.innerHTML = ''; // Limpa a lista para evitar duplicatas
+        listaAvisos.innerHTML = '';
         if (snapshot.exists()) {
             const data = snapshot.val();
             const avisos = Object.entries(data);
@@ -65,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const texto = avisoInput.value.trim();
         if (texto !== '') {
             push(avisosRef, { texto: texto });
-            avisoInput.value = ''; // Limpa o campo de entrada
+            avisoInput.value = '';
         }
     }
 
@@ -77,5 +98,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Enter') {
             adicionarAviso();
         }
+    });
+
+    // Lógica de Autenticação
+    loginBtn.addEventListener('click', () => {
+        const email = authEmail.value;
+        const password = authPassword.value;
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("Login bem-sucedido:", userCredential.user);
+            })
+            .catch((error) => {
+                console.error("Erro no login:", error.message);
+                alert("Erro ao fazer login: " + error.message);
+            });
+    });
+
+    registerBtn.addEventListener('click', () => {
+        const email = authEmail.value;
+        const password = authPassword.value;
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("Cadastro bem-sucedido:", userCredential.user);
+                alert("Cadastro realizado com sucesso! Agora você pode fazer login.");
+            })
+            .catch((error) => {
+                console.error("Erro no cadastro:", error.message);
+                alert("Erro ao cadastrar: " + error.message);
+            });
     });
 });
