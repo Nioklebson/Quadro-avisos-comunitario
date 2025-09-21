@@ -53,11 +53,6 @@ body {
     background-color: #28a745;
 }
 
-/* Esconde o container principal quando o usuário não está logado */
-.container {
-    display: none;
-}
-
 /* Estilos para o container principal da sua aplicação, que será exibido após o login */
 .container {
     background-color: #ffffff;
@@ -67,6 +62,11 @@ body {
     width: 100%;
     max-width: 500px;
     text-align: center;
+}
+
+/* AVISO: A regra abaixo deve ser a última, para garantir que o container não apareça inicialmente */
+.container {
+    display: none;
 }
 
 h1 {
@@ -105,4 +105,31 @@ h1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    text-align: left
+    text-align: left;
+}
+
+.aviso-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.remover-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.remover-btn:hover {
+    background-color: #c82333;
+}
