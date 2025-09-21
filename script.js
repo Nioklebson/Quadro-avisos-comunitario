@@ -14,7 +14,10 @@ const firebaseConfig = {
 
 // Inicializa o app do Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+
+// AQUI ESTÁ A CORREÇÃO: a URL do banco de dados é passada para a função getDatabase
+const database = getDatabase(app, "https://quadro-de-aviso-comunitario-default-rtdb.firebaseio.com/");
+
 const avisosRef = ref(database, 'avisos');
 
 document.addEventListener('DOMContentLoaded', () => {
