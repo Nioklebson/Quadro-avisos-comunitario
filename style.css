@@ -1,3 +1,4 @@
+/* Estilos gerais do corpo da página */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
@@ -8,6 +9,56 @@ body {
     margin: 0;
 }
 
+/* Estilo do container de autenticação */
+.auth-container {
+    background-color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o campo de email e senha */
+.auth-container input[type="email"],
+.auth-container input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: #eee;
+}
+
+/* Estilo dos botões de login e cadastro */
+.auth-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+#auth-login-btn {
+    background-color: #007bff;
+}
+
+#auth-register-btn {
+    background-color: #28a745;
+}
+
+/* Esconde o container principal quando o usuário não está logado */
+.container {
+    display: none;
+}
+
+/* Estilos para o container principal da sua aplicação, que será exibido após o login */
 .container {
     background-color: #ffffff;
     padding: 30px;
@@ -54,31 +105,4 @@ h1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    text-align: left;
-}
-
-.aviso-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    word-wrap: break-word;
-}
-
-.remover-btn {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.remover-btn:hover {
-    background-color: #c82333;
-}
+    text-align: left
