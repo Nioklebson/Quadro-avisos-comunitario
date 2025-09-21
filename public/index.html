@@ -8,16 +8,16 @@
 </head>
 <body>
 
+    <div class="auth-container">
+        <h2>Quadro de Avisos Comunitário</h2>
+        <input type="email" id="auth-email" placeholder="Email" required>
+        <input type="password" id="auth-password" placeholder="Senha" required>
+        <button id="auth-login-btn">Entrar</button>
+        <button id="auth-register-btn">Cadastrar</button>
+    </div>
+
     <div class="container">
         <h1 class="main-title">Quadro de Avisos Comunitário</h1>
-
-        <div class="auth-container">
-            <h2>Entrar ou Cadastrar</h2>
-            <input type="email" id="auth-email" placeholder="Email" required>
-            <input type="password" id="auth-password" placeholder="Senha" required>
-            <button id="auth-login-btn">Entrar</button>
-            <button id="auth-register-btn">Cadastrar</button>
-        </div>
 
         <div class="input-container">
             <input type="text" id="aviso-input" placeholder="Digite seu aviso...">
@@ -26,8 +26,9 @@
 
         <ul class="lista-avisos" id="lista-avisos">
         </ul>
+        <button id="logout-btn">Sair</button>
     </div>
 
-   <script type="module" src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
